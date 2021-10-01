@@ -1,6 +1,6 @@
 class Solution {
     public boolean containsDuplicate(int[] nums) {
-        HashSet<Integer> set = new HashSet<>();
+         HashSet<Integer> set = new HashSet<>();
         for(int i = 0 ; i < nums.length ; i++)
                 set.add(nums[i]);
         
@@ -8,6 +8,5 @@ class Solution {
             return false;
         else
             return true;
-        
     }
 }
