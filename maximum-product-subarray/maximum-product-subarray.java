@@ -1,5 +1,5 @@
 class Solution {
-    public int maxProduct(int[] nums) {
+     public int maxProduct(int[] nums) {
         int prod = 1;
         int res = Integer.MIN_VALUE;
         
