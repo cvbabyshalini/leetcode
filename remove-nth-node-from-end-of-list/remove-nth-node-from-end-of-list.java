@@ -9,43 +9,31 @@
  * }
  */
 class Solution {
-    public static int size(ListNode head){
-        ListNode temp = head;
-        int count = 0;
-        while(temp!=null){
-            count++;
+    public ListNode removeNthFromEnd(ListNode head, int n) {
+        int size = 0 ;
+        ListNode temp = head ;
+        while(temp != null){
+            size++;
             temp = temp.next;
         }
-        return count;
-    }
-    public ListNode removeNthFromEnd(ListNode head, int n) {
-        if(size(head) == 1 && n ==1){
-            head = null;
-            return head;
-        }
-        else if(n == size(head)){
-            head = head.next;
-            return head;
-        }
+        if(size == 1 && n == 1)
+            return null;
+        if(size == n)
+            return head.next;
         ListNode t1 = head;
-        ListNode t2 = head;
         for(int i = 0 ; i < n ; i++){
-            t1 = t1.next;
+            t1=t1.next;
         }
-        while(t1 != null){
-            t1 = t1.next;
+        ListNode t2 = head;
+        while(t1!=null){
+            t1= t1.next;
             t2 = t2.next;
         }
-        removeAtIdx(head,t2);
-        
-        return head;
-        
-    }
-    public static void removeAtIdx(ListNode head, ListNode t){
-        ListNode temp = head;
-        while(temp.next != t){
-            temp = temp.next;
+        t1 = head;
+        while(t1.next != t2){
+            t1 = t1.next;
         }
-        temp.next = t.next;
+        t1.next = t2.next;
+        return head;
     }
 }
