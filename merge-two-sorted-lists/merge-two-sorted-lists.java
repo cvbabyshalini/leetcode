@@ -10,47 +10,33 @@
  */
 class Solution {
     public ListNode mergeTwoLists(ListNode l1, ListNode l2) {
-        ListNode ans = new ListNode();
-    ListNode temp=ans;
-    
-    //We are traversimg the smallest linklist
-    ListNode t1 =l1 , t2=l2;
-    while(t1!=null && t2!=null){
-        if(t1.val>=t2.val){
-            ListNode node = new ListNode();
-            temp.next=node;
-            node.val=t2.val;
-            t2=t2.next;
-            temp=temp.next;
+       ListNode head = new ListNode(-1);
+        ListNode pointer = head;
+        while(l1 != null || l2 != null)
+        {
+            if(l1 != null && l2 != null)
+            {
+                if(l1.val <= l2.val)
+                {
+                    pointer.next = l1;
+                    l1 = l1.next;
+                } else{
+                    pointer.next = l2;
+                    l2 = l2.next;
+                }
+                
+            } else if(l1 != null)
+            {
+                pointer.next = l1;
+                l1 = l1.next;
+            } else if(l2 != null)
+            {
+                pointer.next = l2;
+                l2 = l2.next;
+            }
+            pointer = pointer.next;
         }
-        else{
-            ListNode node = new ListNode();
-            temp.next=node;
-            node.val=t1.val;
-            t1=t1.next;
-            temp=temp.next;
-        }
-    }
-    
-    //Filling the rest of 1st linklist
-    
-    while(t1!=null){
-            ListNode node = new ListNode();
-            temp.next=node;
-            node.val=t1.val;
-            t1=t1.next;
-         temp=temp.next;
-    }
-    
-     //Filling the rest of 2nd linklist
-    
-    while(t2!=null){
-            ListNode node = new ListNode();
-            temp.next=node;
-            node.val=t2.val;
-            t2=t2.next;
-         temp=temp.next;
-    }
-    return ans.next;
+        
+        return head.next;
     }
 }
